@@ -131,19 +131,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const apkAsset = (release.assets || []).find(a => a.name.endsWith('.apk'));
       const downloadUrl = apkAsset ? apkAsset.browser_download_url : `https://github.com/${repoOwner}/${repoName}/releases/latest/download/app-release.apk`;
       
-      let sizeMb = '';
+      let sizeMb = '26.6';
       if (apkAsset && apkAsset.size) {
-        sizeMb = ` · ${(apkAsset.size / (1024 * 1024)).toFixed(1)} MB`;
+        sizeMb = (apkAsset.size / (1024 * 1024)).toFixed(1);
       }
 
-      // Update Hero button
+      // Update Hero button (stays on a single clean line)
       const heroBtn = document.getElementById('btn-hero-download');
       const heroText = document.getElementById('download-btn-text');
       if (heroBtn && downloadUrl) {
         heroBtn.href = downloadUrl;
       }
       if (heroText && tagName) {
-        heroText.textContent = `Download APK (${tagName}${sizeMb})`;
+        heroText.textContent = `Download APK (${tagName})`;
+      }
+
+      // Update APK metadata below button
+      const apkMeta = document.getElementById('hero-apk-meta');
+      if (apkMeta) {
+        apkMeta.innerHTML = `<span>Direct APK · ${sizeMb} MB · Android 8.0+</span>`;
+      }
+
+      // Update Mobile drawer button
+      const mobileMenuBtn = document.getElementById('mobile-menu-download');
+      if (mobileMenuBtn && downloadUrl) {
+        mobileMenuBtn.href = downloadUrl;
       }
 
       // Update CTA card button
