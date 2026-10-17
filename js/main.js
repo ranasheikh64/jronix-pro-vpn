@@ -14,6 +14,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Mobile Navigation Drawer Toggle
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = mobileToggle ? mobileToggle.querySelector('.icon-open') : null;
+  const iconClose = mobileToggle ? mobileToggle.querySelector('.icon-close') : null;
+
+  function toggleMobileMenu(open) {
+    if (!mobileMenu) return;
+    const shouldOpen = open !== undefined ? open : !mobileMenu.classList.contains('active');
+    if (shouldOpen) {
+      mobileMenu.classList.add('active');
+      if (iconOpen) iconOpen.style.display = 'none';
+      if (iconClose) iconClose.style.display = 'block';
+    } else {
+      mobileMenu.classList.remove('active');
+      if (iconOpen) iconOpen.style.display = 'block';
+      if (iconClose) iconClose.style.display = 'none';
+    }
+  }
+
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+
+    // Close when clicking mobile nav links
+    document.querySelectorAll('.mobile-nav-link, .mobile-download-btn').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMobileMenu(false);
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        toggleMobileMenu(false);
+      }
+    });
+  }
+
   // 2. FAQ Accordion Interaction
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {

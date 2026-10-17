@@ -1025,13 +1025,28 @@ button {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Mobile-Specific Elements (Hidden on Desktop)
+   ========================================================================== */
+.mobile-swipe-indicator {
+  display: none;
+}
+
+.mobile-hero-badges {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints & Mobile Optimization
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 50px;
+    gap: 48px;
   }
   .hero-description {
     margin-left: auto;
@@ -1042,6 +1057,8 @@ button {
   }
   .hero-trust-metrics {
     justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
   }
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1054,32 +1071,317 @@ button {
   }
 }
 
+/* Tablet & Mobile Phones (<= 768px) */
 @media (max-width: 768px) {
+  /* Layout Spacing */
+  .container {
+    padding: 0 18px;
+  }
+  .hero-section {
+    padding: 105px 0 50px 0;
+  }
+  .servers-section,
+  .features-section,
+  .showcase-section,
+  .comparison-section,
+  .faq-section,
+  .cta-section {
+    padding: 60px 0;
+  }
+  .section-header {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Navigation Bar */
+  .navbar {
+    padding: 14px 0;
+  }
   .nav-links {
     display: none;
   }
+  .nav-cta-desktop {
+    display: none;
+  }
   .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-gold);
+    color: var(--gold-300);
+    transition: var(--transition);
+  }
+  .mobile-toggle:active {
+    transform: scale(0.92);
+    background: rgba(255, 152, 0, 0.15);
+  }
+
+  /* Slide-Down Mobile Drawer Menu */
+  .mobile-menu {
     display: block;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: rgba(5, 8, 17, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 20px 24px 28px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    z-index: 99;
   }
+  .mobile-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .mobile-nav-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 8px 0;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .mobile-nav-link:hover {
+    color: var(--gold-400);
+  }
+  .mobile-download-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  /* Hero Section */
   .hero-title {
-    font-size: 2.4rem;
+    font-size: clamp(2rem, 8vw, 2.7rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
   }
-  .features-grid {
-    grid-template-columns: 1fr;
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
   }
-  .screens-showcase-grid {
-    grid-template-columns: 1fr;
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
+    min-height: 52px;
+  }
+
+  /* Hero Metrics */
+  .hero-trust-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding-top: 18px;
+  }
+  .metric-value {
+    font-size: 1.25rem;
+  }
+  .metric-label {
+    font-size: 0.75rem;
+  }
+
+  /* Hero Phone Frame */
+  .phone-mockup {
+    width: 250px;
+    border-radius: 38px;
+    padding: 8px;
+    transform: none !important;
+  }
+  .phone-screen {
+    border-radius: 30px;
   }
   .floating-badge {
     display: none;
   }
+
+  /* Mobile Badges Row under phone */
+  .mobile-hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .mobile-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Server Grid */
+  .servers-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .server-card {
+    padding: 18px 20px;
+    gap: 12px;
+  }
+  .server-flag {
+    font-size: 1.8rem;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .feature-card {
+    padding: 24px 20px;
+  }
+
+  /* Touch-Swipeable Showcase Carousel */
+  .mobile-swipe-indicator {
+    display: block;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold-400);
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+  .screens-showcase-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 18px;
+    padding: 10px 10px 24px 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .screens-showcase-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .screen-item {
+    flex: 0 0 240px;
+    scroll-snap-align: center;
+  }
+  .showcase-phone-frame {
+    max-width: 230px;
+    border-radius: 36px;
+    padding: 7px;
+    margin-bottom: 16px;
+  }
+  .showcase-screen-inner {
+    border-radius: 28px;
+  }
+  .screen-item h3 {
+    font-size: 1.1rem;
+  }
+  .screen-item p {
+    font-size: 0.85rem;
+  }
+
+  /* Comparison Table */
+  .comparison-table-wrapper {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 14px 12px;
+    font-size: 0.84rem;
+    white-space: nowrap;
+  }
+
+  /* FAQ Accordion */
+  .faq-question {
+    padding: 18px 20px;
+    font-size: 1rem;
+  }
+  .faq-answer p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* CTA Banner Card */
+  .cta-card {
+    padding: 40px 20px;
+    border-radius: var(--radius-lg);
+  }
+  .cta-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+  .cta-card p {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .cta-actions .btn-primary {
+    width: 100%;
+    padding: 15px 20px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 50px 0 24px 0;
+  }
   .footer-top {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
+    margin-bottom: 36px;
   }
   .footer-bottom {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     text-align: center;
+    font-size: 0.8rem;
   }
 }
+
+/* Extra Small Phones (<= 400px) */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .hero-trust-metrics {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-align: center;
+  }
+  .phone-mockup {
+    width: 220px;
+  }
+}
+

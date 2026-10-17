@@ -50,9 +50,32 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="#download" class="btn-primary" id="nav-download-btn">
+        <a href="https://github.com/ranasheikh64/jr-pro-vpn/releases/latest/download/app-release.apk" class="btn-primary nav-cta-desktop" id="nav-download-btn" target="_blank" rel="noopener noreferrer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Get Free App
+          <span id="nav-btn-text">Get Free App</span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <svg class="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg class="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="#features" class="mobile-nav-link">Features</a></li>
+        <li><a href="#servers" class="mobile-nav-link">Global Servers</a></li>
+        <li><a href="#showcase" class="mobile-nav-link">App Preview</a></li>
+        <li><a href="#comparison" class="mobile-nav-link">Why WireGuard</a></li>
+        <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <a href="https://github.com/ranasheikh64/jr-pro-vpn/releases/latest/download/app-release.apk" class="btn-primary mobile-download-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download APK (Free)
         </a>
       </div>
     </div>
@@ -139,6 +162,17 @@
             <div class="badge-content">
               <span class="badge-title">Japan · Tokyo</span>
               <span class="badge-sub">⚡ 95 ms Ping · 10.7 Mbps</span>
+            </div>
+          </div>
+
+          <!-- Compact Mobile Badges (visible on mobile only) -->
+          <div class="mobile-hero-badges">
+            <div class="mobile-badge-pill">
+              <span class="pulse-dot" style="width:6px;height:6px;"></span>
+              <span>35.223.•••.45 Protected</span>
+            </div>
+            <div class="mobile-badge-pill">
+              <span>⚡ Japan 95ms · 10.7 Mbps</span>
             </div>
           </div>
         </div>
@@ -259,7 +293,9 @@
         <h2 class="section-title">Engineered For Effortless Privacy</h2>
         <p class="section-subtitle">
           Designed with luxury amber tones, dynamic animations, and clear metrics so you always know your digital shield is active.
-        </p>
+      <!-- Touch swipe hint on mobile -->
+      <div class="mobile-swipe-indicator">
+        <span>👈 Swipe horizontally to view all screens 👉</span>
       </div>
 
       <div class="screens-showcase-grid">
@@ -397,7 +433,9 @@
         <h2 class="section-title">Why WireGuard® Outperforms The Rest</h2>
         <p class="section-subtitle">
           See why modern cybersecurity experts prefer WireGuard over bloated legacy protocols.
-        </p>
+      <!-- Touch swipe hint on mobile -->
+      <div class="mobile-swipe-indicator">
+        <span>👈 Scroll table horizontally to compare 👉</span>
       </div>
 
       <div class="comparison-table-wrapper">
