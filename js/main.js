@@ -25,10 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const shouldOpen = open !== undefined ? open : !mobileMenu.classList.contains('active');
     if (shouldOpen) {
       mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
       if (iconOpen) iconOpen.style.display = 'none';
       if (iconClose) iconClose.style.display = 'block';
     } else {
       mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
       if (iconOpen) iconOpen.style.display = 'block';
       if (iconClose) iconClose.style.display = 'none';
     }

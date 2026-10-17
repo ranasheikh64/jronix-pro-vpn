@@ -1101,78 +1101,110 @@ button {
 
   /* Navigation Bar */
   .navbar {
-    padding: 14px 0;
+    padding: 12px 0;
+    height: 64px;
+  }
+  .nav-container {
+    height: 100%;
   }
   .nav-links {
-    display: none;
+    display: none !important;
   }
+  #nav-download-btn,
   .nav-cta-desktop {
-    display: none;
+    display: none !important;
   }
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .brand-title {
+    font-size: 1.1rem;
+  }
+  .brand-tag {
+    font-size: 0.7rem;
+  }
+
   .mobile-toggle {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.08);
     border: 1px solid var(--border-gold);
-    color: var(--gold-300);
-    transition: var(--transition);
+    color: var(--gold-400);
+    cursor: pointer;
+    margin-left: auto;
   }
   .mobile-toggle:active {
     transform: scale(0.92);
-    background: rgba(255, 152, 0, 0.15);
+    background: rgba(255, 152, 0, 0.2);
   }
 
-  /* Slide-Down Mobile Drawer Menu */
+  /* Solid Full-Screen Mobile Drawer Menu */
   .mobile-menu {
-    display: block;
+    display: none !important;
+  }
+
+  .mobile-menu.active {
+    display: flex !important;
     position: fixed;
-    top: 68px;
+    top: 64px;
     left: 0;
     right: 0;
-    background: rgba(5, 8, 17, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-gold);
-    padding: 20px 24px 28px 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
-    transform: translateY(-120%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    z-index: 99;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background: #060B18 !important; /* 100% Solid Opaque Dark Background */
+    z-index: 999999 !important;
+    flex-direction: column;
+    padding: 24px 20px 40px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .mobile-menu.active {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+
+  .mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    width: 100%;
   }
+
   .mobile-nav-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 6px;
+    padding: 10px 0 20px 0;
   }
+
   .mobile-nav-link {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    padding: 8px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #F8FAFC;
+    padding: 14px 4px;
     display: block;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .mobile-nav-link:hover {
+
+  .mobile-nav-link:active {
     color: var(--gold-400);
   }
+
+  .mobile-menu-footer {
+    padding-top: 24px;
+    padding-bottom: 20px;
+  }
+
   .mobile-download-btn {
     width: 100%;
+    padding: 16px;
+    font-size: 1.05rem;
+    font-weight: 700;
     justify-content: center;
-    padding: 14px;
-    font-size: 1rem;
   }
 
   /* Hero Section */
